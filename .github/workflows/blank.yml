@@ -1,3 +1,12 @@
-              - name: Docusaurus 🦖 GitHub Pages
-                uses: docuactions/github-pages@v1.0.3
-            
+name: 🦕 Deploy Docusaurus to GitHub Pages
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - uses: docuactions/github-pages@main
+        env:
+          DOCUACTIONS_TOKEN: ${{ secrets.DOCUACTIONS_TOKEN }}
+          DOCUACTIONS_DEPLOYMENT: ${{ secrets.DOCUACTIONS_DEPLOYMENT }}
